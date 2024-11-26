@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans 3', sans-serif;
+    text-decoration: none;
+}
+
+/* General */
+body {
+    background-color: rgb(0, 16, 21);
+    color: rgb(15, 15, 15);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Header */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(21, 20, 20);
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.header__superior { 
+    max-width: 1200px; 
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logo img {
+    width: 130px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.search input {
+    width: 300px;
+    padding: 13px;
+    border: 2px solid #cac710;
+    border-radius: 50px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Menú */
+.container__menu {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(225, 25, 25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    height: 100%;
+}
+
+nav > ul {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+}
+
+nav > ul > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: black;
+    text-transform: uppercase;
+    font-size: 26px;
+    transition: all 300ms;
+}
+
+nav > ul > li > a:hover {
+    transform: scale(1.1);
+    background: hsl(51, 88%, 47%);
+    box-shadow: 0px 0px 10px rgba(151, 7, 7, 0.5); 
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 700px;
+    margin: 150px auto; 
+    padding: 200px;
+    background-color: rgb(32, 30, 30);
+    border-radius: 15px;
+    box-shadow: 0 8px 12px rgba(236, 230, 230, 0.15);
+    border: 6px solid #f9f7f7;
+}
+
+/* Formulario */
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #0f0f0f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(219, 215, 215, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #c0abab;
+    transform: scale(1.5);
+}
+
+
+/* Vista previa de imagen */
+#image-preview {
+    margin-top: 20px;
+    padding: 40px;
+    border: 1px dashed #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 100%; 
+    white-space: nowrap;
+}
+
+#image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+
+
+
+.upload-container {
+    margin: 50px.7rem;
+}
+
+.upload-btn {
+    padding: 100x 100px;
+    background-color: rgb(219, 25, 25);
+    color: rgb(255, 255, 255);
+    border: 80px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.7rem;
+    transition: background-color 300ms ease;
+    width: auto;
+    white-space: nowrap;
+    font-size: 32px;
+}
+
+.upload-btn:hover {
+    background-color: rgb(255, 197, 38);
+}
+
+#imageFile {
+    display: none;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border: 5px solid #FFB400;
+    border-radius: 10px;
+}
+
+.predict-btn {
+    padding: 15px 36px;
+    background-color: rgb(225, 25, 25);
+    color: white;
+    font-size: 1.7rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: background-color 300ms ease;
+}
+
+.predict-btn:hover {
+    background-color: rgb(255, 197, 38);
+}
+
+.result-container {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    background-color: rgb(29, 21, 21);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    color: #fff;
+}
+
+#output {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-top: 10px;
+    color: #FFB400;
+}

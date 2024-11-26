@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Custom Vision</title>
+    <link rel="stylesheet" href="Clasificador/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="header__superior">
+            <div class="logo">
+                <img src="Captura de pantalla 2024-11-23 083051.png " alt="Logo">
+            </div>
+            <div class="search">
+                <input type="search" placeholder="Buscar">
+            </div>    
+        </div>  
+
+        <div class="container__menu">
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div> 
+    </header>
+
+
+
+
+
+
+ <!-- Título principal -->
+ <div id="page-title">
+    Clasificador de Imágenes
+</div>
+
+
+
+
+
+
+    
+    <div class="upload-container">
+        <label for="image-upload" class="upload-btn">Seleccionar una imagen</label>
+        <input type="file" id="image-upload" accept="image/*" style="display: none;" />
+        <div id="image-preview"></div>
+    </div>
+
+    <div class="container">
+       
+        <div class="upload-container">
+            <label for="imageFile" class="upload-btn">Anadir una imagen</label>
+            <input type="file" id="imageFile" accept="image/jpeg, image/png" />
+        </div>
+
+        <div class="image-preview">
+            <img id="imagePreview" src="" alt="Vista previa de la imagen" />
+        </div>
+
+        <button id="predict" class="predict-btn">Predecir</button>
+
+        <div id="result" class="result-container">
+            <h2>Resultado:</h2>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    
+
+    <script>
+        const ENDPOINT_URL = "https://identificardordeanucios-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/43fee3b9-e938-40a5-bae4-90c7424158ce/detect/iterations/Iteration17/image";
+        const PREDICTION_KEY = "6AECdWtXTE5BZBoHYd7NRSD3Vz4iapRhRKFdLzN7CUIroBMHQnnrJQQJ99AKACYeBjFXJ3w3AAAIACOGxWa5";
+
+        document.getElementById("predict").addEventListener("click", async () => {
+            const file = document.getElementById("imageFile").files[0];
+
+            if (!file) {
+                alert("Por favor, selecciona un archivo de imagen.");
+                return;
+            }
+
+            const formData = await file.arrayBuffer();
+
+            const response = await fetch(ENDPOINT_URL, {
+                method: "POST",
+                headers: {
+                    "Prediction-Key": PREDICTION_KEY,
+                    "Content-Type": "application/octet-stream",
+                },
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error del servidor: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const predictions = result.predictions || [];
+
+            // Mostrar la imagen seleccionada
+            const imagePreview = document.getElementById("imagePreview");
+            imagePreview.src = URL.createObjectURL(file);
+
+            // Mostrar las predicciones con probabilidades redondeadas
+            let output = "";
+            predictions.forEach(prediction => {
+                output += `${prediction.tagName}: ${Math.round(prediction.probability * 100)}%\n`;
+            });
+
+            document.getElementById("output").textContent = output;
+        });
+    </script>
+
+</body>
+</html>
